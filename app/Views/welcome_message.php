@@ -31,6 +31,7 @@
     var c = 0;
     var places = [
       {'city':'Charlotte','lat':-80.843124,'lng':35.227085},
+      {'city':'Ft Lauderdale','lat':-80.137314,'lng':26.122438},
       {'city':'Miami','lat':-80.191788,'lng':25.761681},
       {'city':'Sosua','lat':-70.491213,'lng':19.666497}
     ]
@@ -42,13 +43,14 @@
        
    function fly(x,y,z,c){
         viewer.entities.add({
-            position: Cesium.Cartesian3.fromDegrees(x, y),
+            position: Cesium.Cartesian3.fromDegrees(x, y, 5000),
             label: {
               text: z,
-            },
+              pixelOffset: new Cesium.Cartesian2(0.0, 0)
+            },            
           });
         viewer.camera.flyTo({
-            destination : Cesium.Cartesian3.fromDegrees(x, y, 120000),
+            destination : Cesium.Cartesian3.fromDegrees(x, y, 210000),
             duration:25,
             orientation : {
                 heading : Cesium.Math.toRadians(0.0),
@@ -58,7 +60,7 @@
             complete: function(){
                 c++;
 
-                if(c == 3){
+                if(c == 4){
                   c = 0;
                 }
 
